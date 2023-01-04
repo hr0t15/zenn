@@ -1,0 +1,14 @@
+title: "MLOpsハンズオン環境構築(MLFlow Tracking/prefect)"
+summary: "MLOpsの中でも実験管理(MLFlow Tracking)とワークフロー(prefect)のハンズオンを行うための環境を構築する。"
+topics: ["MLOps", "MLFlow", "prefect", "minio"]
+published: false
+price: 0 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - 01_intro
+  - 02_conf
+  - 03_minio
+  - 04_01_mlflow_server
+  - 04_02_mlflow_client
+  - 05_prefect
+  - 06_docker
