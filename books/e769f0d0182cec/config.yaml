@@ -1,0 +1,13 @@
+title: "GNU makeによるタスクランナー"
+summary: "GNU makeを用いたタスクランナーを作るためのtips集"
+topics: ["make", "makefile", "Bash"]
+published: false
+price: 0 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - 01_intro
+  - 02_rule_task
+  - 03_multi
+  - 04_make
+  - 11_variable
+  - 12_function
