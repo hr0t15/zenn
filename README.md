@@ -7,8 +7,13 @@
 * [Zenn CLIで記事・本を管理する方法](https://zenn.dev/zenn/articles/zenn-cli-guide)
 * [GitHubリポジトリでZennのコンテンツを管理する](https://zenn.dev/zenn/articles/zenn-cli-guide)
 
+## TOPIC
 
-## ブラウザでのプレビュー
+### ZennのMarkdown記法一覧
+
+[ZennのMarkdown記法一覧](https://zenn.dev/zenn/articles/markdown-guide) を見よう。
+
+### ブラウザでのプレビュー
 
 本文の執筆は、ブラウザでプレビューしながら確認できる。  
 ブラウザでプレビューするためには次のコマンドを実行します。
