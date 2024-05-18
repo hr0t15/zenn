@@ -7,7 +7,15 @@
 * [Zenn CLIで記事・本を管理する方法](https://zenn.dev/zenn/articles/zenn-cli-guide)
 * [GitHubリポジトリでZennのコンテンツを管理する](https://zenn.dev/zenn/articles/zenn-cli-guide)
 
-Zenn CLIのインストールだけ、READMEに移植する。
+
+## ブラウザでのプレビュー
+
+本文の執筆は、ブラウザでプレビューしながら確認できる。  
+ブラウザでプレビューするためには次のコマンドを実行します。
+
+```bash
+npx zenn preview
+```
 
 ## Zenn CLIのインストール
 
