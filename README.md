@@ -17,6 +17,22 @@
 npx zenn preview
 ```
 
+デフォルトでは`localhost:8000`で立ち上がりますが、以下のようにポート番号の指定もできる。
+
+```bash
+npx zenn preview --port 3000
+```
+
+バックグラウンド実行は以下にてできる。
+
+```bash
+nohup npx zenn preview --port 8000 &
+```
+
+* `&` を使うと、コマンドがバックグラウンドで実行される。
+* `nohup` コマンドを使うと、ターミナルを閉じてもプロセスが継続して実行される。
+
+
 ## Zenn CLIのインストール
 
 [Zenn CLIをインストールする](https://zenn.dev/zenn/articles/install-zenn-cli)をベースに記載する。
