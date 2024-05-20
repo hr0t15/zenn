@@ -1,5 +1,5 @@
-title: "個人開発におけるGitワークフロー入門"
-summary: "Gitにおけるワークフローとして、Git FlowやGitHub Flowなどが有名だが、ここでは個人開発に適したワークフローであるGit フィーチャーブランチワークフローについて取り扱う。"
+title: "個人開発におけるGitブランチ戦略入門"
+summary: "この記事では、Gitにおけるブランチ戦略および、個人開発に向いたブランチ戦略の提案とそのハンズオンを提供する。"
 topics: ["git", "github", "gitlab"]
 published: false
 price: 0 # 有料の場合200〜5000
@@ -9,4 +9,5 @@ chapters:
   - 100_handson_00
   - 101_handson_01
   - 102_handson_02
+  - 201_handson_03
 

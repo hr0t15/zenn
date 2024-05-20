@@ -1,49 +1,60 @@
 ---
-title: "ケース2: 2機能の同時実装"
+title: "シナリオ2: 1つの機能の実装（プルリクエストあり）"
 ---
 
-ここでは2つの機能を同時に実装し、一方の機能の実装途中ではあるものの、もう1つの機能の実装が求められた場合のフローについてハンズオンを行っていく。
+## 1. フィーチャーブランチの作成
 
-## 1つ目の機能開発を行う
+新しい機能を開発するために、フィーチャーブランチ`feature/my-feature-101`を作成し、切り替えも同時に行う。
 
-まずはブランチが`main`しかないことを確認する。
+```bash:terminal
+git switch -c feature/my-feature-101
+```
+
+`git switch`コマンドは、ブランチの切り替えを行うコマンドだが、`-c`を付与することで、新規作成したうえで切り替えも同時に行ってくれる。
+
+
+`git branch`コマンドは、現在のリポジトリのブランチを管理するために使用される。  
+このコマンドを実行すると、ローカルリポジトリ内のすべてのブランチが表示され、現在チェックアウトされているブランチがアスタリスク（`*`）で示される。
+
+現時点でリポジトリが2つあり、チェックアウトされているブランチは`feature/my-feature-101`であることを確認する。
 
 ```bash:terminal
 git branch
 ```
 
 ```
-* main
-```
-
-ここで、先ほどと同様にブランチ`feature/my-feature-201`を作成する。
-
-```bash:terminal
-git switch -c feature/my-feature-201
-git branch
-```
-
-```
-* feature/my-feature-201
+* feature/my-feature-101
   main
 ```
 
-ここで、成果物となるファイルを作成し、コミット・プッシュまでを行う。
+
+## 2. 機能の開発
+
+フィーチャーブランチでコードを編集し、新しい機能を開発する。
 
 ```bash:terminal
-echo "This is a new file." > new-file-201-01.txt
-git add new-file-201-01.txt
-git commit -m "Add new-file-201-01.txt"
-git push -u origin feature/my-feature-201
+echo "This is a new file." > new-file-101.txt
 ```
 
+開発に伴うコミットを行う。
 
-## 2つ目の機能開発を行う
+```bash:terminal
+git add new-file-101.txt
+git commit -m "Add new-file-101.txt"
+```
 
+開発中は適宜コミットを行うことを推奨する。  
+なお、プッシュも適宜行うことを推奨する。
 
+```bash:terminal
+git push -u origin feature/my-feature-101
+```
 
+## 3. ブランチのマージ
 
-いったん`main`ブランチに戻し、`feature/my-feature-202`に移動する。
+該当機能の開発が完了したら、ブランチのマージを行う。
+
+まずはmainリポジトリをチェックアウトする。
 
 ```bash:terminal
 git switch main
@@ -51,117 +62,49 @@ git branch
 ```
 
 ```
-  feature/my-feature-201
+  feature/my-feature-101
 * main
 ```
 
-```bash:terminal
-git switch -c feature/my-feature-202
-git branch
-```
-
-```
-  feature/my-feature-201
-* feature/my-feature-202
-  main
-```
-
-## 2つ目の機能を開発し、コミット・プッシュする
+`git merge`コマンドにより、指定したブランチを現在チェックアウトされているブランチにマージする。  
+以下により、現在チェックアウトされている`main`に、`feature/my-feature-101`をマージしている。
 
 ```bash:terminal
-echo "# Feature Branch Workflow" > new-file-202.txt
-git add new-file-202.txt
-git commit -m "Add new-file-202.txt"
-git push -u origin feature/my-feature-202
+git merge feature/my-feature-101
 ```
 
-## main ブランチにマージする
+なお、マージによるコンフリクトが発生した場合、手動で解決する必要がある。
+
+最後に`main`ブランチの最新の変更をリモートリポジトリにプッシュする。
 
 ```bash:terminal
-git switch main
-git branch
-```
-
-```
-  feature/my-feature-201
-  feature/my-feature-202
-* main
-```
-
-
-
-```bash:terminal
-git merge feature/my-feature-202
 git push origin main
 ```
 
-## 不要になった2つ目の機能開発用ブランチを削除する
+## 4. 不要ブランチの削除
+
+マージが完了したら、不要になったブランチを削除する。  
+これはローカルリポジトリ・リモートリポジトリに対して実施する必要がある。
+
+まずは、ローカルリポジトリの削除を行う。  
+`git branch`コマンドの`-d`を用いることで、ローカルリポジトリから指定されたブランチを削除することができる。  
+なお、この操作は、ブランチが他のブランチにマージされていない変更を持たない場合にのみ成功し、マージされていない変更がある場合、削除は失敗する。
+
+まずは現状のブランチの状況を確認する。
 
 ```bash:terminal
-git branch -d feature/my-feature-202
 git branch
 ```
 
 ```
-  feature/my-feature-201
+  feature/my-feature-101
 * main
 ```
 
-```bash:terminal
-git push origin --delete feature/my-feature-202
-```
-
-
-## 最初の機能をさらに開発し、コミットする
+以下により、ローカルリポジトリから`feature/my-feature-101`ブランチを削除する。
 
 ```bash:terminal
-git switch feature/my-feature-201
-git branch
-```
-
-```
-* feature/my-feature-201
-  main
-```
-
-```bash:terminal
-echo "This is a new file." > new-file-201-02.txt
-git add new-file-201-02.txt
-git commit -m "Add new-file-201-02.txt"
-git push -u origin feature/my-feature-201
-```
-
-## main ブランチにマージする
-
-```bash:terminal
-git switch main
-git branch
-```
-
-```
-  feature/my-feature-201
-* main
-```
-
-```bash:terminal
-git merge feature/my-feature-201
-git push origin main
-```
-
-## 不要になった最初の機能開発用ブランチを削除する
-
-```bash:terminal
-git branch
-```
-
-```
-  feature/my-feature-201
-* main
-```
-
-
-```bash:terminal
-git branch -d feature/my-feature-201
+git branch -d feature/my-feature-101
 git branch
 ```
 
@@ -169,7 +112,18 @@ git branch
 * main
 ```
 
+ここで、削除しようとしているブランチに未マージのコミットがある場合、エラーが発生し、削除は拒否される。  
+強制的に削除する場合は`-D`オプションを使用する。
+
+次に、リモートリポジトリの削除を行う。
+`git push`コマンドの`--delete`を用いることで、リモートリポジトリから指定されたブランチを削除することができる。  
+
+以下により、リモートリポジトリから`feature/my-feature-101`ブランチを削除する。
+
 ```bash:terminal
-git push origin --delete feature/my-feature-201
+git push origin --delete feature/my-feature-101
 ```
 
+## 次の機能開発を行う
+
+手順1.から4.を繰り返す。
