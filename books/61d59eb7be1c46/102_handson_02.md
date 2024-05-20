@@ -2,15 +2,24 @@
 title: "ケース2: 2機能の同時実装"
 ---
 
-## 最初の機能開発用のブランチを作成する
+ここでは2つの機能を同時に実装し、一方の機能の実装途中ではあるものの、もう1つの機能の実装が求められた場合のフローについてハンズオンを行っていく。
+
+## 1つ目の機能開発を行う
+
+まずはブランチが`main`しかないことを確認する。
+
+```bash:terminal
+git branch
+```
+
+```
+* main
+```
+
+ここで、先ほどと同様にブランチ`feature/my-feature-201`を作成する。
 
 ```bash:terminal
 git switch -c feature/my-feature-201
-```
-
-ブランチが2つあることを確認する。
-
-```bash:terminal
 git branch
 ```
 
@@ -19,32 +28,35 @@ git branch
   main
 ```
 
-
-ファイルを作成する。
+ここで、成果物となるファイルを作成し、コミット・プッシュまでを行う。
 
 ```bash:terminal
 echo "This is a new file." > new-file-201-01.txt
 git add new-file-201-01.txt
 git commit -m "Add new-file-201-01.txt"
-```
-
-プッシュする。
-
-```bash:terminal
 git push -u origin feature/my-feature-201
 ```
 
 
-## 2つ目の機能開発用のブランチを作成する
+## 2つ目の機能開発を行う
+
+
+
+
+いったん`main`ブランチに戻し、`feature/my-feature-202`に移動する。
 
 ```bash:terminal
 git switch main
-git switch -c feature/my-feature-202
+git branch
 ```
 
-ブランチが3つあることを確認する。
+```
+  feature/my-feature-201
+* main
+```
 
 ```bash:terminal
+git switch -c feature/my-feature-202
 git branch
 ```
 
@@ -53,8 +65,6 @@ git branch
 * feature/my-feature-202
   main
 ```
-
-
 
 ## 2つ目の機能を開発し、コミット・プッシュする
 
@@ -69,6 +79,18 @@ git push -u origin feature/my-feature-202
 
 ```bash:terminal
 git switch main
+git branch
+```
+
+```
+  feature/my-feature-201
+  feature/my-feature-202
+* main
+```
+
+
+
+```bash:terminal
 git merge feature/my-feature-202
 git push origin main
 ```
@@ -77,11 +99,6 @@ git push origin main
 
 ```bash:terminal
 git branch -d feature/my-feature-202
-git push origin --delete feature/my-feature-202
-```
-
-
-```bash:terminal
 git branch
 ```
 
@@ -90,8 +107,12 @@ git branch
 * main
 ```
 
+```bash:terminal
+git push origin --delete feature/my-feature-202
+```
 
-## 最初の機能を開発し、コミットする
+
+## 最初の機能をさらに開発し、コミットする
 
 ```bash:terminal
 git switch feature/my-feature-201
@@ -114,6 +135,15 @@ git push -u origin feature/my-feature-201
 
 ```bash:terminal
 git switch main
+git branch
+```
+
+```
+  feature/my-feature-201
+* main
+```
+
+```bash:terminal
 git merge feature/my-feature-201
 git push origin main
 ```
@@ -121,14 +151,25 @@ git push origin main
 ## 不要になった最初の機能開発用ブランチを削除する
 
 ```bash:terminal
-git branch -d feature/my-feature-201
-git push origin --delete feature/my-feature-201
+git branch
 ```
 
+```
+  feature/my-feature-201
+* main
+```
+
+
 ```bash:terminal
+git branch -d feature/my-feature-201
 git branch
 ```
 
 ```
 * main
 ```
+
+```bash:terminal
+git push origin --delete feature/my-feature-201
+```
+

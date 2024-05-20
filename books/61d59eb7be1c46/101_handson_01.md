@@ -58,6 +58,12 @@ git push -u origin feature/my-feature-101
 
 ```bash:terminal
 git switch main
+git branch
+```
+
+```
+  feature/my-feature-101
+* main
 ```
 
 `git merge`コマンドにより、指定したブランチを現在チェックアウトされているブランチにマージする。  
@@ -84,6 +90,17 @@ git push origin main
 `git branch`コマンドの`-d`を用いることで、ローカルリポジトリから指定されたブランチを削除することができる。  
 なお、この操作は、ブランチが他のブランチにマージされていない変更を持たない場合にのみ成功し、マージされていない変更がある場合、削除は失敗する。
 
+まずは現状のブランチの状況を確認する。
+
+```bash:terminal
+git branch
+```
+
+```
+  feature/my-feature-101
+* main
+```
+
 以下により、ローカルリポジトリから`feature/my-feature-101`ブランチを削除する。
 
 ```bash:terminal
@@ -98,7 +115,6 @@ git branch
 ここで、削除しようとしているブランチに未マージのコミットがある場合、エラーが発生し、削除は拒否される。  
 強制的に削除する場合は`-D`オプションを使用する。
 
-
 次に、リモートリポジトリの削除を行う。
 `git push`コマンドの`--delete`を用いることで、リモートリポジトリから指定されたブランチを削除することができる。  
 
@@ -111,5 +127,3 @@ git push origin --delete feature/my-feature-101
 ## 次の機能開発を行う
 
 手順1.から4.を繰り返す。
-
-
