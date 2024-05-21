@@ -8,5 +8,5 @@ chapters:
   - 001_intro
   - 101_install
   - 201_operate
-  - 202_config
-  - 203_backup_restore
+  - 202_backup_restore
+  - 203_config
