@@ -7,6 +7,9 @@ price: 0 # 有料の場合200〜5000
 chapters:
   - 001_intro
   - 101_install
-  - 201_operate
-  - 202_backup_restore
-  - 203_config
+  - 201_config
+  - 202_operate
+  - 203_reconfigure
+  - 204_backup_restore
+  - 301_domain_ssl
+

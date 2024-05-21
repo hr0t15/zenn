@@ -14,7 +14,7 @@ GitLabのインストール手段として、大きくわけて2つの方法が�
 
 
 Omnibus パッケージとは、GitLab CE のコアアプリケーションに加え、それらを稼働するのに必要なアプリケーションとミドルウェアをパッケージ化したものである。
-これを利用することによって面倒な設定をせずに、かんたんな操作のみでインストールを行うことができる。
+バックグラウンドには設定管理ツールであるChefが動作しており、かんたんな操作のみでインストールを行うことができるようになっている。
 
 Omnibus パッケージは、GitLab CEのみならず、GitLab EEにおいても提供されており、GitLab の公式のドキュメントとしては、Omnibus パッケージを利用が強く推奨している。  
 そのためOmnibus パッケージを利用したインストールによる方法を取り扱う。
@@ -44,11 +44,25 @@ sudo apt install -y curl openssh-server ca-certificates tzdata perl
 ### debパッケージのインストールと初回起動
 
 GitLabパッケージをインストールする。  
-ここではGitLab CE（コミュニティエディション）をインストールする。
+そのためにリポジトリの登録を行うスクリプトを実行する。
 
 ```bash:terminal
 curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
+```
+
+ここではGitLab CE（コミュニティエディション）をインストールする。
+
+最新版を導入する場合は、以下の通り`apt install`でインストールできる。
+
+```bash:terminal
 sudo apt install -y gitlab-ce
+```
+
+リストアなどを目的として、バージョンを指定したインストールを行う場合は、以下の通りバージョンを指定する必要がある。  
+以下の例では、17.0.0を指定している。
+
+```bash:terminal
+sudo apt install -y gitlab-ce=17.0.0-ce.0
 ```
 
 GitLabの初回起動を行う。  
