@@ -10,7 +10,7 @@ title: "バックアップスクリプト（一般）"
 以下のdebパッケージをインストールしておく必要がある。
 
 ```bash:terminal
-apt -y install zip unzip smbclient cifs-utils
+sudo apt -y install zip unzip smbclient cifs-utils
 ```
 
 
