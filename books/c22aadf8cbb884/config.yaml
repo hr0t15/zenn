@@ -1,0 +1,8 @@
+title: "運用スクリプト サンプル集 for Windows 10/11"
+summary: "Windows上での運用に用いるサンプルを随時提示する。"
+topics: ["windows", "batch"]
+published: false
+price: 0 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - 101_backup_windows

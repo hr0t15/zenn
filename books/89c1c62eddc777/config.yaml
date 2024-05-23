@@ -1,0 +1,10 @@
+title: "運用スクリプト サンプル集 for Linux"
+summary: "Linux(おもにUbuntu)上での運用に用いるサンプル（おもにbash）を随時提示する。"
+topics: ["Linux", "bash"]
+published: false
+price: 0 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - 101_backup_general
+  - 102_backup_gitlab
+

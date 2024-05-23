@@ -74,3 +74,52 @@ sudo gitlab-ctl tail
 ```
 
 すべてのログがすぐに一覧できる一方で、標準出力はすべて出力されることから、エラーが起きているコンポーネントが特定できた場合は、そのコンポーネントに限定したログを追うようにすることを心掛けるべきである。
+
+
+## バージョン確認
+
+GitLabそのものや、GitLabにまつわるパッケージ一式のバージョンは以下のコマンドで確認できる。  
+のちに述べるが、バックアップで取得したときのGitLabのバージョンとリストアで戻すときのGitLabのバージョンは一致していないといけない。
+そのため、バックアップとして、バージョン情報も残しておく必要がある（ネーミングルールでわかるっちゃわかるけど、それはそれという感じで）。
+
+```bash:terminal
+sudo gitlab-rake gitlab:env:info
+```
+
+```
+System information
+System:         Ubuntu 22.04
+Current User:   git
+Using RVM:      no
+Ruby Version:   3.1.5p253
+Gem Version:    3.5.9
+Bundler Version:2.5.9
+Rake Version:   13.0.6
+Redis Version:  7.0.15
+Sidekiq Version:7.1.6
+Go Version:     unknown
+
+GitLab information
+Version:        17.0.1
+Revision:       bd824d1abb2
+Directory:      /opt/gitlab/embedded/service/gitlab-rails
+DB Adapter:     PostgreSQL
+DB Version:     14.11
+URL:            http://gitlab.local
+HTTP Clone URL: http://gitlab.local/some-group/some-project.git
+SSH Clone URL:  git@gitlab.local:some-group/some-project.git
+Using LDAP:     no
+Using Omniauth: yes
+Omniauth Providers:
+
+GitLab Shell
+Version:        14.35.0
+Repository storages:
+- default:      unix:/var/opt/gitlab/gitaly/gitaly.socket
+GitLab Shell path:              /opt/gitlab/embedded/service/gitlab-shell
+
+Gitaly
+- default Address:      unix:/var/opt/gitlab/gitaly/gitaly.socket
+- default Version:      17.0.1
+- default Git Version:  2.44.1.gl1
+```

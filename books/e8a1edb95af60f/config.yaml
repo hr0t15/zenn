@@ -12,5 +12,6 @@ chapters:
   - 202_operate
   - 203_reconfigure
   - 204_backup_restore
+  - 205_backup_gitlab
   - 301_domain_ssl
 
